@@ -6,6 +6,9 @@ def check_circle(mat) -> bool:
     count = 0
     prev = len(mat[0])
     lst = []
+    b = False
+    # A list of the sum of the value of each object received by the players
+    # to check at the end that the input is correct and the sum of each value is indeed 1
     for i in range(prev):
         lst.append(0)
     for player in range(len(mat)):
@@ -17,12 +20,12 @@ def check_circle(mat) -> bool:
             if mat[player][num] != 0 and mat[player][num] != 1:
                 count += 1
             if count > n - 1:
-                return True
+                b = True
         count = 0
     for i in range(len(lst)):  # Checks that the sum of the values of each object is equal to 1
         if lst[i] != 1:
             print("lst[", i, "]=", lst[i], " error")
-    return False
+    return b
 
 
 # Press the green button in the gutter to run the script.
@@ -39,9 +42,11 @@ if __name__ == '__main__':
     print(check_circle(l5))  # =>False
     l6 = [[0.3, 1, 0.07, 0.3, 0, 0], [0.4, 0, 0.93, 0.5, 0, 0], [0.3, 0, 0, 0.1, 0.5, 0], [0, 0, 0, 0.1, 0.5, 1]]
     print(check_circle(l6))  # =>False
-    l7 = [[0.3, 1, 0.07, 0.3, 0, 0.5], [0.4, 0, 0.93, 0.5, 0, 0.3], [0.3, 0, 0, 0.1, 0.5, 0.1], [0, 0, 0, 0.1, 0.5, 0.1]]
+    l7 = [[0.3, 1, 0.07, 0.3, 0, 0.5], [0.4, 0, 0.93, 0.5, 0, 0.3], [0.3, 0, 0, 0.1, 0.5, 0.1],
+          [0, 0, 0, 0.1, 0.5, 0.1]]
     print(check_circle(l7))  # =>True
-    l8 = [[0.3, 1, 0.07, 0.3, 0, 0.5,1], [0.4, 0, 0.93, 0.5, 0, 0.3,0], [0.3, 0, 0, 0.1, 0.5, 0.1,0],[0, 0, 0, 0.1, 0.5, 0.1,0]]
+    l8 = [[0.3, 1, 0.07, 0.3, 0, 0.5, 1], [0.4, 0, 0.93, 0.5, 0, 0.3, 0], [0.3, 0, 0, 0.1, 0.5, 0.1, 0],
+          [0, 0, 0, 0.1, 0.5, 0.1, 0]]
     print(check_circle(l8))  # =>True
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
